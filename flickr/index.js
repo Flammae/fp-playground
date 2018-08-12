@@ -18,14 +18,18 @@ const mediaUrl = R.compose(
   R.prop("m"),
   R.prop("media")
 );
-const mediaUrls = R.compose(
-  R.map(mediaUrl),
-  R.prop("items")
+// const mediaUrls = R.compose(
+//   R.map(mediaUrl),
+//   R.prop("items")
+// );
+const mediaToImage = R.compose(
+  image,
+  mediaUrl
 );
+
 const images = R.compose(
-  R.map(image),
-  mediaUrls
-  // impure.trace
+  R.map(mediaToImage),
+  R.prop("items")
 );
 
 // impure
@@ -37,4 +41,4 @@ const app = R.compose(
   impure.getJson(render),
   url
 );
-app("nicolas cage");
+app("harry potter");
